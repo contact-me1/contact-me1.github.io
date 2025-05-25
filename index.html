@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWRS - Contact Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #004369;
+            min-height: 100vh;
+            color: #d6d7d7;
+        }
+
+        /* Header Styles */
+        .header {
+            background: #004369;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #d6d7d7;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-link {
+            color: #d6d7d7;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            background: rgba(214, 215, 215, 0.2);
+            border: 2px solid transparent;
+        }
+
+        .nav-link:hover {
+            background: rgba(214, 215, 215, 0.4);
+            border-color: #d6d7d7;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(214, 215, 215, 0.4);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #d6d7d7;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+        }
+
+        /* Card Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: #d6d7d7;
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #004369;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(214, 215, 215, 0.3);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #d6d7d7;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #004369;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(0, 67, 105, 0.9);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: #d6d7d7;
+            margin-right: 1rem;
+            width: 40px;
+            text-align: center;
+        }
+
+        .contact-text {
+            color: #d6d7d7;
+            font-size: 1.1rem;
+        }
+
+        .contact-link {
+            color: #d6d7d7;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #d6d7d7;
+        }
+
+        /* Bottom Cards Grid */
+        .bottom-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: #d6d7d7;
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #004369;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(214, 215, 215, 0.4);
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #d6d7d7;
+            font-weight: bold;
+        }
+
+        .service-link {
+            display: inline-block;
+            color: #d6d7d7;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid #004369;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            background: #004369;
+        }
+
+        .service-link:hover {
+            background: #004369;
+            color: #d6d7d7;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 67, 105, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .bottom-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .container {
+                padding: 2rem 1rem;
+            }
+            
+            .contact-card {
+                padding: 1.5rem;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .service-card:nth-child(1) {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .service-card:nth-child(2) {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        /* لون نص المربعات الكبيرة */
+        .contact-card .card-title,
+        .contact-card .contact-text {
+          color: #004369 !important;
+        }
+
+        /* لون خلفية المربعات الصغيرة */
+        .service-card {
+          background: #307d90 !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">AWRS</div>
+            <a href="https://awrs1.github.io/" class="nav-link" id="homeLink">
+                <i class="fas fa-home"></i> Home
+            </a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1 class="title">Contact Page</h1>
+        
+        <div class="cards-grid">
+            <!-- General Contact Card -->
+            <div class="contact-card">
+                <h2 class="card-title">General Contact</h2>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <div class="contact-text">
+                        <strong>Email:</strong>
+                        <a href="mailto:abd.almohammad557@gmail.com" class="contact-link">
+                            abd.almohammad557@gmail.com
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <div class="contact-text">
+                        <strong>Phone:</strong>
+                        <a href="tel:+966500752618" class="contact-link">
+                            +966 50 075 2618
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service Cards -->
+        <div class="bottom-cards">
+            <div class="service-card">
+                <h3 class="service-title">Contact Sultan</h3>
+                <a href="https://2u.pw/P4vtL" target="_blank" class="service-link" id="sultanLink">
+                    <i class="fas fa-external-link-alt"></i> Visit Website
+                </a>
+            </div>
+            
+            <div class="service-card">
+                <h3 class="service-title">Contact Abdulkareem</h3>
+                <a href="#" class="service-link" id="abdulkareemLink">
+                    <i class="fas fa-external-link-alt"></i> Visit Website
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling and hover effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click animations
+            const cards = document.querySelectorAll('.contact-card, .service-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+
+            // Home link click handler
+            document.getElementById('homeLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Add loading animation
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+                
+                setTimeout(() => {
+                    window.open('https://awrs1.github.io/', '_blank');
+                    this.innerHTML = '<i class="fas fa-home"></i> Home';
+                }, 500);
+            });
+
+            // Sultan link click handler
+            document.getElementById('sultanLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Opening link...';
+                
+                setTimeout(() => {
+                    window.open('https://2u.pw/P4vtL', '_blank');
+                    this.innerHTML = '<i class="fas fa-external-link-alt"></i> Visit Website';
+                }, 500);
+            });
+
+            // Abdul Kareem link placeholder
+            document.getElementById('abdulkareemLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Abdulkareem\'s link will be added soon');
+            });
+
+            // Parallax effect for background
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const parallax = document.body;
+                const speed = scrolled * 0.5;
+                parallax.style.backgroundPosition = `center ${speed}px`;
+            });
+
+            // Email and phone click tracking
+            document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"]').forEach(link => {
+                link.addEventListener('click', function() {
+                    console.log('Contact method used:', this.href);
+                });
+            });
+        });
+
+        // Add floating animation to cards
+        function addFloatingAnimation() {
+            const cards = document.querySelectorAll('.contact-card, .service-card');
+            
+            cards.forEach((card, index) => {
+                setInterval(() => {
+                    card.style.transform = `translateY(${Math.sin(Date.now() * 0.001 + index) * 3}px)`;
+                }, 50);
+            });
+        }
+
+        // Initialize floating animation after page load
+        window.addEventListener('load', addFloatingAnimation);
+    </script>
+</body>
+</html>
